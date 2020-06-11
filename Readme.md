@@ -12,7 +12,7 @@ Currently, several launch options are supported:
 
 ## Launch parameters
 The launch options depend on the location of the apk file sent for analysis. Also, there are required parameters that must be specified for any type of launch:
- * `dsmobile_url` - network address for DS Mobile (the path to the root without the final /), when using the cloud version - `https://saas.mobile.derscanner.com`
+ * `dsmobile_url` - network address for DS Mobile (the path to the root without the final /), when using the cloud version - `https://saas-mobile.derscanner.com`
  * `profile` - ID of the profile to be analyzed
  * `testcase` - ID of the test case to be executed; it is possible to run several test cases by specifying their IDs separated with spaces
  * `token` - CI/CD access token (refer to our documentation for ways to retrieve the token)
@@ -54,7 +54,7 @@ To download application from AppCenter distribution system you need to select th
 To start local file analysis:
 
 ```
-python3.6 run-dsmobile-scan.py --distribution_system file --file_path "/dsmobile/demo/apk/dsmobile-demo.apk" --dsmobile_url "https://saas.mobile.derscanner.com" --profile 1 --testcase 4 --token "eyJ0eXA4OiJKA1QiLbJhcGciO5JIU4I1NiJ1.eyJzdaJqZWNcX2lkIj53LCJle5AiOjf1OTM5OTU3MjB1.hfI6c4VN_U2mo5VfRoENPvJCvpxhLzjHqI0gxqgr2Bs"
+python3.6 run-dsmobile-scan.py --distribution_system file --file_path "/dsmobile/demo/apk/dsmobile-demo.apk" --dsmobile_url "https://saas-mobile.derscanner.com" --profile 1 --testcase 4 --token "eyJ0eXA4OiJKA1QiLbJhcGciO5JIU4I1NiJ1.eyJzdaJqZWNcX2lkIj53LCJle5AiOjf1OTM5OTU3MjB1.hfI6c4VN_U2mo5VfRoENPvJCvpxhLzjHqI0gxqgr2Bs"
 ```
 
 As a result, an automated analysis of the `dsmobile-demo.apk` application with a profile with `id 1` and a test case with `id 4` will be launched.
@@ -63,7 +63,7 @@ As a result, an automated analysis of the `dsmobile-demo.apk` application with a
 To run application analysis from a HockeyApp system:
 
 ```
-python3.6 run-dsmobile-scan.py --distribution_system hockeyapp --hockey_token 18bc81146d374ba4b1182ed65e0b3aaa --bundle_id com.dsmobilesecurity.demo --hockey_version 31337 --dsmobile_url "https://saas.mobile.derscanner.com" --profile 2 --testcase 3 --token "eyJ0eXA4OiJKA1QiLbJhcGciO5JIU4I1NiJ1.eyJzdaJqZWNcX2lkIj53LCJle5AiOjf1OTM5OTU3MjB1.hfI6c4VN_U2mo5VfRoENPvJCvpxhLzjHqI0gxqgr2Bs"
+python3.6 run-dsmobile-scan.py --distribution_system hockeyapp --hockey_token 18bc81146d374ba4b1182ed65e0b3aaa --bundle_id com.dsmobilesecurity.demo --hockey_version 31337 --dsmobile_url "https://saas-mobile.derscanner.com" --profile 2 --testcase 3 --token "eyJ0eXA4OiJKA1QiLbJhcGciO5JIU4I1NiJ1.eyJzdaJqZWNcX2lkIj53LCJle5AiOjf1OTM5OTU3MjB1.hfI6c4VN_U2mo5VfRoENPvJCvpxhLzjHqI0gxqgr2Bs"
 ```
 
 As a result, an application with the package ID `com.dsmobilesecurity.demo` and version` 31337` will be found on the HockeyApp system. It will be downloaded and an automated analysis will be performed for it with a profile with `id 2` and a test case with` id 3`.
@@ -72,7 +72,7 @@ As a result, an application with the package ID `com.dsmobilesecurity.demo` and 
 To start scannig the latest version of an application in HockeyApp system using the application's public ID:
 
 ```
-python3.6 run-dsmobile-scan.py --distribution_system hockeyapp --hockey_token 18bc81146d374ba4b1182ed65e0b3aaa --public_id "1234567890abcdef1234567890abcdef" --dsmobile_url "https://saas.mobile.derscanner.com" --profile 2 --testcase 3 --token "eyJ0eXA4OiJKA1QiLbJhcGciO5JIU4I1NiJ1.eyJzdaJqZWNcX2lkIj53LCJle5AiOjf1OTM5OTU3MjB1.hfI6c4VN_U2mo5VfRoENPvJCvpxhLzjHqI0gxqgr2Bs"
+python3.6 run-dsmobile-scan.py --distribution_system hockeyapp --hockey_token 18bc81146d374ba4b1182ed65e0b3aaa --public_id "1234567890abcdef1234567890abcdef" --dsmobile_url "https://saas-mobile.derscanner.com" --profile 2 --testcase 3 --token "eyJ0eXA4OiJKA1QiLbJhcGciO5JIU4I1NiJ1.eyJzdaJqZWNcX2lkIj53LCJle5AiOjf1OTM5OTU3MjB1.hfI6c4VN_U2mo5VfRoENPvJCvpxhLzjHqI0gxqgr2Bs"
 ```
 As a result, the latest available version of the application with the unique public ID `1234567890abcdef1234567890abcdef` will be found in HockeyApp system. The application will be downloaded and automatically analyzed using the profile with `ID 2` and the test case with `ID 3`.
 
@@ -80,14 +80,14 @@ As a result, the latest available version of the application with the unique pub
 To start scannig an application using its name, the name of the owner and the release ID, the following command should be entered:
 
 ```
-python3.6 run-dsmobile-scan.py --distribution_system appcenter --appcenter_token 18bc81146d374ba4b1182ed65e0b3aaa --appcenter_owner_name test_org_or_user --appcenter_app_name dsmobile_debug_version_of_test --appcenter_release_id 710 --dsmobile_url "https://saas.mobile.derscanner.com" --profile 2 --testcase 3 --token "eyJ0eXA4OiJKA1QiLbJhcGciO5JIU4I1NiJ1.eyJzdaJqZWNcX2lkIj53LCJle5AiOjf1OTM5OTU3MjB1.hfI6c4VN_U2mo5VfRoENPvJCvpxhLzjHqI0gxqgr2Bs"
+python3.6 run-dsmobile-scan.py --distribution_system appcenter --appcenter_token 18bc81146d374ba4b1182ed65e0b3aaa --appcenter_owner_name test_org_or_user --appcenter_app_name dsmobile_debug_version_of_test --appcenter_release_id 710 --dsmobile_url "https://saas-mobile.derscanner.com" --profile 2 --testcase 3 --token "eyJ0eXA4OiJKA1QiLbJhcGciO5JIU4I1NiJ1.eyJzdaJqZWNcX2lkIj53LCJle5AiOjf1OTM5OTU3MjB1.hfI6c4VN_U2mo5VfRoENPvJCvpxhLzjHqI0gxqgr2Bs"
 ```
 As a result, the `debug_version_of_test` application with release `ID 710` will be found among applications of the specified owner (user or organization `test_org_or_user`). This version of the release will be downloaded and sent to DS Mobile for security analysis.
 
 To download the latest version of the release you need to use the following parameter: `appcenter_release_id latest`. The command line will look as follows:
 
 ```
-python3.6 run-dsmobile-scan.py --distribution_system appcenter --appcenter_token 18bc81146d374ba4b1182ed65e0b3aaa --appcenter_owner_name "test_org_or_user" --appcenter_app_name "dsmobile_debug_version_of_test" --appcenter_release_id latest --dsmobile_url "https://saas.mobile.derscanner.com" --profile 2 --testcase 3 --token "eyJ0eXA4OiJKA1QiLbJhcGciO5JIU4I1NiJ1.eyJzdaJqZWNcX2lkIj53LCJle5AiOjf1OTM5OTU3MjB1.hfI6c4VN_U2mo5VfRoENPvJCvpxhLzjHqI0gxqgr2Bs"
+python3.6 run-dsmobile-scan.py --distribution_system appcenter --appcenter_token 18bc81146d374ba4b1182ed65e0b3aaa --appcenter_owner_name "test_org_or_user" --appcenter_app_name "dsmobile_debug_version_of_test" --appcenter_release_id latest --dsmobile_url "https://saas-mobile.derscanner.com" --profile 2 --testcase 3 --token "eyJ0eXA4OiJKA1QiLbJhcGciO5JIU4I1NiJ1.eyJzdaJqZWNcX2lkIj53LCJle5AiOjf1OTM5OTU3MjB1.hfI6c4VN_U2mo5VfRoENPvJCvpxhLzjHqI0gxqgr2Bs"
 ```
 
 As a result, the latest available release of the application will be downloaded.
@@ -96,7 +96,7 @@ As a result, the latest available release of the application will be downloaded.
 To start the analysis of the application by the known name, owner and version (`version_code` in` Android Manifest`), you need to run the following command:
 
 ```
-python3.6 run-dsmobile-scan.py --distribution_system appcenter --appcenter_token 18bc81146d374ba4b1182ed65e0b3aaa --appcenter_owner_name "test_org_or_user" --appcenter_app_name "dsmobile_debug_version_of_test" --appcenter_app_version 31337 --dsmobile_url "https://saas.mobile.derscanner.com" --profile 2 --testcase 3 --token "eyJ0eXA4OiJKA1QiLbJhcGciO5JIU4I1NiJ1.eyJzdaJqZWNcX2lkIj53LCJle5AiOjf1OTM5OTU3MjB1.hfI6c4VN_U2mo5VfRoENPvJCvpxhLzjHqI0gxqgr2Bs"
+python3.6 run-dsmobile-scan.py --distribution_system appcenter --appcenter_token 18bc81146d374ba4b1182ed65e0b3aaa --appcenter_owner_name "test_org_or_user" --appcenter_app_name "dsmobile_debug_version_of_test" --appcenter_app_version 31337 --dsmobile_url "https://saas-mobile.derscanner.com" --profile 2 --testcase 3 --token "eyJ0eXA4OiJKA1QiLbJhcGciO5JIU4I1NiJ1.eyJzdaJqZWNcX2lkIj53LCJle5AiOjf1OTM5OTU3MjB1.hfI6c4VN_U2mo5VfRoENPvJCvpxhLzjHqI0gxqgr2Bs"
 ```
 
 As a result, in the owner workspace (user or organization `test_org_or_user`) will be found application `dsmobile_debug_version_of_test` and will be found a release in which the version of the application `31337` was specified. This version will be downloaded and submitted for security analysis to DSMobile.
